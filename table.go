@@ -14,16 +14,16 @@ func toFixed(num float64, precision int) float64 {
 	return float64(round(num * output)) / output
 }
 
-func randomFloat(min, max float64) float64 {
-	return toFixed(min + rand.Float64() * (max - min), 1)
+func randomFloat(min, max float64, precision int) float64 {
+	return toFixed(min + rand.Float64() * (max - min), precision)
 }
 
-func generateRandomTable(height, width int, min, max float64) [][]float64 {
+func generateRandomTable(height, width int, min, max float64, precision int) [][]float64 {
 	result := make([][]float64, height, height)
 	for i := 0; i < height; i++ {
 		row := make([]float64, width, width)
 		for j := 0; j < width; j++ {
-			row[j] = randomFloat(min, max)
+			row[j] = randomFloat(min, max, precision)
 		}
 		result[i] = row
 	}
